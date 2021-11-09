@@ -84,8 +84,8 @@ class RemoveTileEntities(wx.Panel, DefaultOperationUI):
             self,
             world.translation_manager,
             wx.VERTICAL,
-            *(options.get("fill_block_options", []) or [world.level_wrapper.platform]),
-            show_pick_block=True
+            show_pick_block=True,
+            **(options.get("fill_block_options") or {"platform": world.level_wrapper.platform, "block_name": "air"})
         )
         self._block_define.Bind(EVT_PICK, self._on_pick_block_button)
         self._sizer.Add(self._block_define, 1, wx.ALL | wx.ALIGN_CENTRE_HORIZONTAL, 5)
@@ -122,14 +122,14 @@ class RemoveTileEntities(wx.Panel, DefaultOperationUI):
             {
                 "regex_filter": self._regex_filter.GetLineText(0),
                 "fill_block": self._get_fill_block(),
-                "fill_block_options": (
-                    self._block_define.platform,
-                    self._block_define.version_number,
-                    self._block_define.force_blockstate,
-                    self._block_define.namespace,
-                    self._block_define.block_name,
-                    self._block_define.properties,
-                ),
+                "fill_block_options": {
+                    'platform': self._block_define.platform,
+                    'version_number': self._block_define.version_number,
+                    'force_blockstate': self._block_define.force_blockstate,
+                    'namespace': self._block_define.namespace,
+                    'block_name': self._block_define.block_name,
+                    'properties': self._block_define.properties,
+                },
             }
         )
 
