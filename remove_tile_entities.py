@@ -2,11 +2,8 @@ from typing import TYPE_CHECKING, Tuple
 import wx
 import re
 
-from amulet.operations.fill import fill
-
 from amulet_map_editor.api.wx.ui.base_select import EVT_PICK
 from amulet_map_editor.api.wx.ui.block_select import BlockDefine
-from amulet_map_editor.api.wx.ui.simple import SimplePanel, SimpleSizer
 from amulet_map_editor.programs.edit.api.operations import DefaultOperationUI
 from amulet_map_editor import log
 
