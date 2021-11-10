@@ -50,7 +50,7 @@ def remove_tiles_and_blocks(
                 yield count / iter_count
         for key in keys:
             chunk._block_entities.__delitem__(key)
-        log.info(f"Removed {count} Tile Entities")
+    log.info(f"Removed {count} Tile Entities")
 
 class RemoveTileEntities(wx.Panel, DefaultOperationUI):
     def __init__(
